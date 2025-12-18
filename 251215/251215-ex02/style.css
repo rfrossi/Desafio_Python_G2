@@ -1,0 +1,63 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  width: 900px;
+}
+
+.left {
+  width: 250px;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+}
+
+#add-recipe {
+  width: 100%;
+  font-size: 24px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: pink;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.card.active {
+  background-color: #dbeafe;
+  border-color: #3b82f6;
+}
+
+.right {
+  flex: 1;
+  padding: 15px;
+  display: none;
+}
+
+.right input,
+.right textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+textarea {
+  height: 80px;
+}
+
+#delete-recipe {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+}
