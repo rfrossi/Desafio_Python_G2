@@ -194,23 +194,44 @@ O dataset tem 220k linhas. Tempo normal:
 - [x] Relatorio de analise gerado
 - [x] Dataset limpo salvo em CSV
 
+## Card 3 - Analise Descritiva
+
+#### 3. Analise Descritiva (Card 3)
+
+```bash
+poetry run python src/descriptive_analysis.py
+```
+
+**Saida esperada**:
+- Estatisticas descritivas (media, mediana, desvio padrao) de latency_ms, request_size_bytes e response_size_bytes
+- Deteccao de outliers via IQR para as tres metricas
+- Graficos salvos em `outputs/`:
+  - `histogramas_erros.png` - Top 15 tipos de erro + histogramas de latencia e tamanho
+  - `serie_temporal_falhas.png` - Volume de falhas por hora (01/01/2024 a 13/01/2024)
+  - `matriz_correlacao.png` - Correlacao entre carga da API e taxa de falha
+
+**Checklist Card 3**:
+- [x] Media, mediana e desvio padrao calculados
+- [x] Outliers identificados com IQR
+- [x] Histogramas de distribuicao dos erros gerados
+- [x] Matriz de correlacao entre carga e taxa de falha gerada
+
 ## Proximos Passos
 
-Com o dataset pre-processado, pode-se:
+Com o dataset pre-processado e a analise descritiva concluida, pode-se:
 
-1. Executar Analise Exploratoria de Dados (EDA)
-2. Criar visualizacoes
-3. Fazer Feature Engineering
-4. Treinar modelos de Machine Learning
+1. Fazer Feature Engineering
+2. Treinar modelos de Machine Learning
 
 ## Suporte
 
-Para mais detalhes sobre o pre-processamento, veja:
-- `PREPROCESSING_REPORT.md` - Relatorio completo
-- `src/data_cleaning.py` - Codigo com documentacao
-- `src/analysis_report.py` - Script de validacao
+Para mais detalhes sobre cada etapa, veja:
+- `PREPROCESSING_REPORT.md` - Relatorio completo do pre-processamento
+- `src/data_cleaning.py` - Codigo com documentacao (Card 1/2)
+- `src/analysis_report.py` - Script de validacao (Card 1/2)
+- `src/descriptive_analysis.py` - Analise descritiva (Card 3)
 
 ---
 
-**Status**: ✓ Projeto Pronto para Execucao
-**Ultima Atualizacao**: 2024-03-03
+**Status**: Projeto com Cards 1, 2 e 3 concluidos
+**Ultima Atualizacao**: 2026-03-03
