@@ -19,10 +19,11 @@ Projeto de análise de dados usando Python com ferramentas modernas de data scie
 
 ## 🚀 Setup do Projeto
 
-### 1. Clonar ou inicializar o projeto
+### 1. Clonar o repositório
 
 ```bash
-cd Desafio03_Python
+git clone https://github.com/rfrossi/Desafio_Python_G2.git
+cd Desafio_Python_G2
 ```
 
 ### 2. Instalar dependências
@@ -46,21 +47,30 @@ poetry run python script.py
 ## 📁 Estrutura do Projeto
 
 ```
-Desafio03_Python/
+Desafio_Python_G2/
 ├── 01_documents/      # Documentação e materiais de referência
 ├── 02_research/       # Pesquisa e análise preliminar
+├── .vscode/           # Configurações do VS Code
 ├── main.py            # Script principal
 ├── pyproject.toml     # Configuração do Poetry
+├── poetry.lock        # Lock file do Poetry
 ├── README.md          # Este arquivo
 └── .gitignore         # Arquivos ignorados pelo Git
 ```
 
 ## 💡 Uso
 
-Após instalar e ativar o ambiente:
+### Opção 1: Rodando diretamente com Poetry
 
 ```bash
 poetry run python main.py
+```
+
+### Opção 2: Dentro do ambiente virtual
+
+```bash
+poetry shell
+python main.py
 ```
 
 ## 🔧 Configuração VS Code
@@ -76,5 +86,11 @@ Se precisar reconhecê-lo manualmente:
 
 - [Poetry Documentation](https://python-poetry.org/docs/)
 - [Pandas Documentation](https://pandas.pydata.org/)
+- [NumPy Documentation](https://numpy.org/doc/)
 - [Scikit-learn Documentation](https://scikit-learn.org/)
 - [Matplotlib Documentation](https://matplotlib.org/)
+- [Seaborn Documentation](https://seaborn.pydata.org/)
+
+## 📝 Notas
+
+Este projeto foi reorganizado para ter `Desafio_Python_G2` como raiz do repositório, centralizando todas as dependências e configurações no nível superior.
