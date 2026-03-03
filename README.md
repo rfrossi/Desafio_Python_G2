@@ -48,10 +48,6 @@ poetry run python script.py
 
 ```
 Desafio_Python_G2/
-├── 01_documents/      # Documentação e materiais de referência
-├── 02_research/       # Pesquisa e análise preliminar
-├── .vscode/           # Configurações do VS Code
-├── main.py            # Script principal
 ├── pyproject.toml     # Configuração do Poetry
 ├── poetry.lock        # Lock file do Poetry
 ├── README.md          # Este arquivo
@@ -60,27 +56,25 @@ Desafio_Python_G2/
 
 ## 💡 Uso
 
-### Opção 1: Rodando diretamente com Poetry
+Após instalar e ativar o ambiente, você pode executar seus scripts Python:
 
 ```bash
-poetry run python main.py
+poetry run python seu_script.py
 ```
 
-### Opção 2: Dentro do ambiente virtual
+Ou dentro do ambiente virtual:
 
 ```bash
 poetry shell
-python main.py
+python seu_script.py
 ```
 
 ## 🔧 Configuração VS Code
 
-O projeto já está pré-configurado para usar o Python do Poetry no VS Code. O interpretador apontará automaticamente para `.venv/bin/python`.
-
-Se precisar reconhecê-lo manualmente:
+Para usar o Python do Poetry no VS Code:
 1. Abra a paleta de comandos: `Ctrl+Shift+P`
 2. Procure por: `Python: Select Interpreter`
-3. Escolha a opção com `.venv`
+3. Escolha o interpretador com `.venv` ou use o caminho do Poetry
 
 ## 📖 Recursos Úteis
 
