@@ -1,0 +1,36 @@
+# Poetry
+.venv/
+dist/
+build/
+*.egg-info/
+poetry.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Data Analysis
+.ipynb_checkpoints/
+*.ipynb
+*.csv
+*.xlsx
+*.xls
+
+# OS
+.DS_Store
+Thumbs.db
