@@ -19,10 +19,11 @@ Projeto de análise de dados usando Python com ferramentas modernas de data scie
 
 ## 🚀 Setup do Projeto
 
-### 1. Clonar ou inicializar o projeto
+### 1. Clonar o repositório
 
 ```bash
-cd Desafio03_Python
+git clone https://github.com/rfrossi/Desafio_Python_G2.git
+cd Desafio_Python_G2
 ```
 
 ### 2. Instalar dependências
@@ -46,35 +47,44 @@ poetry run python script.py
 ## 📁 Estrutura do Projeto
 
 ```
-Desafio03_Python/
-├── 01_documents/      # Documentação e materiais de referência
-├── 02_research/       # Pesquisa e análise preliminar
-├── main.py            # Script principal
+Desafio_Python_G2/
 ├── pyproject.toml     # Configuração do Poetry
+├── poetry.lock        # Lock file do Poetry
 ├── README.md          # Este arquivo
 └── .gitignore         # Arquivos ignorados pelo Git
 ```
 
 ## 💡 Uso
 
-Após instalar e ativar o ambiente:
+Após instalar e ativar o ambiente, você pode executar seus scripts Python:
 
 ```bash
-poetry run python main.py
+poetry run python seu_script.py
+```
+
+Ou dentro do ambiente virtual:
+
+```bash
+poetry shell
+python seu_script.py
 ```
 
 ## 🔧 Configuração VS Code
 
-O projeto já está pré-configurado para usar o Python do Poetry no VS Code. O interpretador apontará automaticamente para `.venv/bin/python`.
-
-Se precisar reconhecê-lo manualmente:
+Para usar o Python do Poetry no VS Code:
 1. Abra a paleta de comandos: `Ctrl+Shift+P`
 2. Procure por: `Python: Select Interpreter`
-3. Escolha a opção com `.venv`
+3. Escolha o interpretador com `.venv` ou use o caminho do Poetry
 
 ## 📖 Recursos Úteis
 
 - [Poetry Documentation](https://python-poetry.org/docs/)
 - [Pandas Documentation](https://pandas.pydata.org/)
+- [NumPy Documentation](https://numpy.org/doc/)
 - [Scikit-learn Documentation](https://scikit-learn.org/)
 - [Matplotlib Documentation](https://matplotlib.org/)
+- [Seaborn Documentation](https://seaborn.pydata.org/)
+
+## 📝 Notas
+
+Este projeto foi reorganizado para ter `Desafio_Python_G2` como raiz do repositório, centralizando todas as dependências e configurações no nível superior.
