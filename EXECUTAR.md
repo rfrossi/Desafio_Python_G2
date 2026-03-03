@@ -216,12 +216,91 @@ poetry run python src/descriptive_analysis.py
 - [x] Histogramas de distribuicao dos erros gerados
 - [x] Matriz de correlacao entre carga e taxa de falha gerada
 
-## Proximos Passos
+## Card 4 - Analise Preditiva (PCA + ARIMA + Prophet)
 
-Com o dataset pre-processado e a analise descritiva concluida, pode-se:
+#### 4. Analise Preditiva
 
-1. Fazer Feature Engineering
-2. Treinar modelos de Machine Learning
+```bash
+poetry run python src/predictive_analysis.py
+```
+
+**O que este script faz**:
+1. Normaliza as features numericas com `StandardScaler`
+2. Aplica `PCA` com 3 componentes para reducao de dimensionalidade
+3. Agrega falhas por hora para criar serie temporal
+4. Treina modelo `ARIMA(1,1,1)` e gera previsao para 48h futuras
+5. Treina modelo `Prophet` com sazonalidade diaria e gera previsao para 48h futuras
+6. Compara os modelos com MAE, RMSE e MAPE
+
+**Graficos gerados em `outputs/`**:
+- `pca_analise.png`         - Scree plot, loadings e dispersao PC1 x PC2
+- `previsao_falhas.png`     - Previsoes futuras de ARIMA e Prophet
+- `comparacao_modelos.png`  - Scatter real x previsto + barras de metricas
+
+**Dependencias adicionais necessarias**:
+```bash
+# Instala statsmodels e prophet junto com todas as dependencias
+poetry install
+```
+
+> **Nota**: O Prophet requer `cmdstanpy` como backend. Em caso de problemas
+> na instalacao, tente: `pip install prophet` diretamente no ambiente.
+> O script funciona normalmente sem o Prophet (ARIMA continua disponivel).
+
+**Exemplo de saida**:
+```
+======================================================================
+ANALISE PREDITIVA — PCA + ARIMA + Prophet
+Dataset: API Error Logs (220k registros)
+======================================================================
+[LOADING] api_error_logs_with_root_causes_220k_rows.csv
+[OK] 220,000 linhas x 22 colunas
+
+======================================================================
+2. NORMALIZACAO — StandardScaler
+======================================================================
+[INFO] Features: ['latency_ms', 'request_size_bytes', ...]
+[INFO] Amostras: 50,000
+  latency_ms         media=+0.0000  std=1.0000
+  ...
+
+======================================================================
+3. REDUCAO DE DIMENSIONALIDADE — PCA
+======================================================================
+[OK] PCA com 3 componentes principais:
+  PC1:   52.3%   ████████████████████████   (acumulada: 52.3%)
+  PC2:   28.1%   █████████████              (acumulada: 80.4%)
+  PC3:   12.6%   ██████                     (acumulada: 93.0%)
+
+======================================================================
+7. COMPARACAO DE MODELOS — METRICAS DE PRECISAO
+======================================================================
+  ARIMA(1,1,1)  →  MAE=XX.XX  |  RMSE=XX.XX  |  MAPE=XX.XX%
+  Prophet       →  MAE=XX.XX  |  RMSE=XX.XX  |  MAPE=XX.XX%
+  Melhor modelo por RMSE: Prophet
+
+======================================================================
+CHECKLIST TECNICO — ANALISE PREDITIVA
+======================================================================
+  [OK] Dados normalizados com StandardScaler
+  [OK] PCA aplicado as features numericas
+  [OK] ARIMA(1,1,1) treinado e previsao gerada
+  [OK] Prophet ajustado para tendencias sazonais
+  [OK] Visualizacao de previsoes futuras gerada
+  [OK] Comparacao entre modelos gerada
+
+  Resultado: 6/6 itens concluidos
+
+[SUCCESS] Analise preditiva concluida!
+```
+
+**Checklist Card 4**:
+- [x] Dados normalizados com StandardScaler
+- [x] PCA com 3 componentes aplicado
+- [x] ARIMA(1,1,1) treinado com previsao de 48h
+- [x] Prophet com sazonalidade diaria ajustado
+- [x] Metricas MAE, RMSE e MAPE calculadas para ambos os modelos
+- [x] Visualizacoes de previsoes e comparacao geradas
 
 ## Suporte
 
@@ -230,8 +309,9 @@ Para mais detalhes sobre cada etapa, veja:
 - `src/data_cleaning.py` - Codigo com documentacao (Card 1/2)
 - `src/analysis_report.py` - Script de validacao (Card 1/2)
 - `src/descriptive_analysis.py` - Analise descritiva (Card 3)
+- `src/predictive_analysis.py` - Analise preditiva PCA + ARIMA + Prophet (Card 4)
 
 ---
 
-**Status**: Projeto com Cards 1, 2 e 3 concluidos
+**Status**: Projeto com Cards 1, 2, 3 e 4 concluidos
 **Ultima Atualizacao**: 2026-03-03
