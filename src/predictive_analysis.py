@@ -51,7 +51,7 @@ warnings.filterwarnings("ignore")
 # ─── Configuração ─────────────────────────────────────────────────────────────
 
 BASE_DIR   = Path(__file__).parent.parent
-INPUT_FILE = BASE_DIR / "api_error_logs_with_root_causes_220k_rows.csv"
+INPUT_FILE = BASE_DIR / "api_error_logs_cleaned.csv"
 OUTPUT_DIR = BASE_DIR / "outputs"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
@@ -70,15 +70,10 @@ plt.rcParams.update({"figure.dpi": 120, "figure.facecolor": "white"})
 # ─── 1. Carregamento ──────────────────────────────────────────────────────────
 
 def carregar_dados() -> pd.DataFrame:
-    """Carrega o dataset e adiciona coluna de falha (status_code >= 400)."""
+    """Carrega o dataset pré-processado e adiciona coluna de falha (status_code >= 400)."""
     print(f"\n[LOADING] {INPUT_FILE.name}")
     df = pd.read_csv(INPUT_FILE, parse_dates=["timestamp"])
-    print(f"[OK] {df.shape[0]:,} linhas × {df.shape[1]} colunas")
-
-    if df["error_type"].isnull().any():
-        n = df["error_type"].isnull().sum()
-        df["error_type"] = df["error_type"].fillna("Undefined")
-        print(f"[INFO] {n:,} nulos em 'error_type' preenchidos com 'Undefined'")
+    print(f"[OK] {df.shape[0]:,} linhas × {df.shape[1]} colunas (pré-processado)")
 
     df["falha"] = (df["status_code"] >= 400).astype(int)
     return df
