@@ -152,10 +152,11 @@ st.plotly_chart(fig_tempo, use_container_width=True)
 col_bar, col_box = st.columns(2)
 
 with col_bar:
+    contagem_erro = df["error_type"].value_counts()
+    n_top_erros = min(len(contagem_erro), 10)  # Máximo 10, ou menos se houver poucos
     contagem_erro = (
-        df["error_type"]
-        .value_counts()
-        .head(10)
+        contagem_erro
+        .head(n_top_erros)
         .reset_index()
         .rename(columns={"error_type": "Tipo de Erro", "count": "Quantidade"})
     )
@@ -164,7 +165,7 @@ with col_bar:
         x="Quantidade",
         y="Tipo de Erro",
         orientation="h",
-        title="Top 10 Tipos de Erro",
+        title=f"Top {n_top_erros} Tipos de Erro",
         color="Quantidade",
         color_continuous_scale="Blues",
     )
