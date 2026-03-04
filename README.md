@@ -26,7 +26,14 @@ git clone https://github.com/rfrossi/Desafio_Python_G2.git
 cd Desafio_Python_G2
 ```
 
-### 2. Instalar dependências
+### 2. Preparar os Dados
+
+Antes de executar o projeto, você precisa baixar o dataset original do Kaggle:
+1. Acesse o [API Failure Intelligence Dataset (AFID)](https://www.kaggle.com/datasets/mirzayasirabdullah07/api-failure-intelligence-dataset-afid/)
+2. Baixe o arquivo CSV principal do dataset.
+3. Salve o arquivo na **raiz do projeto** (`Desafio_Python_G2/`) com o nome exato: `api_error_logs_with_root_causes_220k_rows.csv`
+
+### 3. Instalar dependências
 
 ```bash
 poetry install

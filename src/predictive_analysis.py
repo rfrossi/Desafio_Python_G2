@@ -579,6 +579,13 @@ def visualizar_comparacao(
 # ─── 10. Checklist Técnico ────────────────────────────────────────────────────
 
 def checklist_tecnico(metricas: pd.DataFrame) -> None:
+    """
+    Verifica a conclusao das tarefas previstas para a analise preditiva, validando
+    a aplicacao dos modelos e artefatos de visualizacao gerados.
+    
+    Args:
+        metricas: DataFrame contendo as metricas geradas pela previsao e comparacao
+    """
     print("\n" + "=" * 70)
     print("CHECKLIST TÉCNICO — ANÁLISE PREDITIVA")
     print("=" * 70)
@@ -610,6 +617,14 @@ def checklist_tecnico(metricas: pd.DataFrame) -> None:
 # ─── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
+    """
+    Executa o fluxo completo do treinamento analitico preditivo: normalizacao via StandardScaler, 
+    reducao de dimensionalidade (PCA), formatacao da serie temporal e predicao (ARIMA+Prophet).
+    Em seguida, verifica o resultado final comparando previsoes.
+    
+    Returns:
+        pd.DataFrame: DataFrame com a comparacao das metricas de erro dos dois modelos.
+    """
     print("\n" + "=" * 70)
     print("ANÁLISE PREDITIVA — PCA + ARIMA + Prophet")
     print("Dataset: API Error Logs (220k registros)")
