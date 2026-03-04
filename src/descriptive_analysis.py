@@ -35,6 +35,12 @@ plt.rcParams.update({"figure.dpi": 120, "figure.facecolor": "white"})
 # ─── Carregamento ─────────────────────────────────────────────────────────────
 
 def carregar_dados() -> pd.DataFrame:
+    """
+    Carrega o dataset AFID e preenche valores nulos em 'error_type'.
+    
+    Returns:
+        pd.DataFrame: DataFrame carregado.
+    """
     print(f"\n[LOADING] Carregando dataset: {INPUT_FILE.name}")
     df = pd.read_csv(INPUT_FILE, parse_dates=["timestamp"])
     print(f"[OK] {df.shape[0]:,} linhas, {df.shape[1]} colunas")
@@ -51,6 +57,16 @@ def carregar_dados() -> pd.DataFrame:
 # ─── 1. Estatisticas Descritivas ──────────────────────────────────────────────
 
 def estatisticas_descritivas(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Calcula as estatisticas descritivas (media, mediana, desvio padrao, min, max, n)
+    das métricas de resposta do dataset.
+    
+    Args:
+        df: DataFrame contendo os logs da API.
+        
+    Returns:
+        pd.DataFrame: DataFrame contendo as estatisticas processadas.
+    """
     print("\n" + "=" * 70)
     print("1. ESTATISTICAS DESCRITIVAS DAS METRICAS DE RESPOSTA")
     print("=" * 70)
@@ -76,6 +92,16 @@ def estatisticas_descritivas(df: pd.DataFrame) -> pd.DataFrame:
 # ─── 2. Deteccao de Outliers (IQR) ───────────────────────────────────────────
 
 def detectar_outliers_iqr(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Detecta outliers numericos usando o metodo IQR (Intervalo Interquartil)
+    para cada metrica de resposta.
+    
+    Args:
+        df: DataFrame original de logs da API.
+        
+    Returns:
+        pd.DataFrame: DataFrame quantificando os outliers encontrados em cada metrica.
+    """
     print("\n" + "=" * 70)
     print("2. DETECCAO DE OUTLIERS - METODO IQR")
     print("=" * 70)
@@ -113,6 +139,13 @@ def detectar_outliers_iqr(df: pd.DataFrame) -> pd.DataFrame:
 # ─── 3. Histogramas de Distribuicao dos Erros ────────────────────────────────
 
 def histogramas_erros(df: pd.DataFrame) -> None:
+    """
+    Gera e salva um painel contendo histogramas da distribuicao dos tipos de erros, 
+    latencia e tamanho da requisicao.
+    
+    Args:
+        df: DataFrame de logs da API.
+    """
     print("\n" + "=" * 70)
     print("3. HISTOGRAMAS - DISTRIBUICAO DOS ERROS")
     print("=" * 70)
@@ -180,6 +213,12 @@ def histogramas_erros(df: pd.DataFrame) -> None:
 # ─── 4. Analise Temporal das Falhas ──────────────────────────────────────────
 
 def analise_temporal(df: pd.DataFrame) -> None:
+    """
+    Gera e salva o grafico contendo o volume de falhas agrupado por hora.
+    
+    Args:
+        df: DataFrame com os logs gerais da API.
+    """
     print("\n" + "=" * 70)
     print("4. ANALISE TEMPORAL DAS FALHAS")
     print("=" * 70)
@@ -208,6 +247,13 @@ def analise_temporal(df: pd.DataFrame) -> None:
 # ─── 5. Matriz de Correlacao ─────────────────────────────────────────────────
 
 def matriz_correlacao(df: pd.DataFrame) -> None:
+    """
+    Gera a matriz de correlação contendo diversas metricas como latencia media, 
+    volume de requisicoes, entre outras, extraidas a cada hora.
+    
+    Args:
+        df: DataFrame com dados e features de requests a API.
+    """
     print("\n" + "=" * 70)
     print("5. MATRIZ DE CORRELACAO - CARGA DA API vs TAXA DE FALHA")
     print("=" * 70)
@@ -271,6 +317,13 @@ def matriz_correlacao(df: pd.DataFrame) -> None:
 # ─── 6. Checklist Tecnico ────────────────────────────────────────────────────
 
 def checklist_tecnico(stats: pd.DataFrame, outliers: pd.DataFrame) -> None:
+    """
+    Testes manuais para relatorio indicando cada check basico e sua completude.
+    
+    Args:
+        stats: DataFrame com status_code gerais para afericao na avaliacao de conclusoes
+        outliers: DataFrame listando outliers pre mensurados por deteccao_iqr.
+    """
     print("\n" + "=" * 70)
     print("CHECKLIST TECNICO - CARD 3")
     print("=" * 70)
@@ -304,6 +357,10 @@ def checklist_tecnico(stats: pd.DataFrame, outliers: pd.DataFrame) -> None:
 # ─── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
+    """
+    Funcao principal de entrada. Carrega os dados, chama todos os metodos processuais
+    e relatorios necessarios e imprime a mensagem do checklist gerado via arquivo log.
+    """
     print("\n" + "=" * 70)
     print("ANALISE DESCRITIVA - CARD 3")
     print("Dataset: API Error Logs (220k registros)")

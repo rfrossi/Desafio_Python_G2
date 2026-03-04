@@ -18,6 +18,7 @@ Arquivos de saida gerados:
 
 1. **Python 3.13+** instalado
 2. **Poetry** instalado (`pip install poetry`)
+3. **Dataset Kaggle**: Baixe o arquivo CSV do dataset no [Kaggle: API Failure Intelligence Dataset (AFID)](https://www.kaggle.com/datasets/mirzayasirabdullah07/api-failure-intelligence-dataset-afid/). Salve-o na raiz do projeto com o nome exato: `api_error_logs_with_root_causes_220k_rows.csv`.
 
 ## Instalacao das Dependencias
 
@@ -170,10 +171,11 @@ chcp 65001
 poetry run python src/data_cleaning.py
 ```
 
-### Dataset nao encontrado
+### Dataset nao encontrado ou nome incorreto
 
 Certifique-se de que os arquivos estao no local correto:
-- `api_error_logs_with_root_causes_220k_rows.csv` deve estar na raiz do projeto
+- O arquivo baixado do Kaggle deve estar na raiz do projeto.
+- O nome deve ser **exatamente** `api_error_logs_with_root_causes_220k_rows.csv`.
 
 ### Lentidao ao processar
 

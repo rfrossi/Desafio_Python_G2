@@ -27,6 +27,14 @@ INPUT_FILE = BASE_DIR / "api_error_logs_cleaned.csv"
 
 @st.cache_data
 def carregar_dados() -> pd.DataFrame:
+    """
+    Carrega o dataset pre-processado do disco com cacheamento do Streamlit.
+    Realiza o tratamento de nulos em 'error_type' e cria colunas auxiliares
+    como 'falha' e 'data' para uso nos graficos e testes.
+    
+    Returns:
+        pd.DataFrame: DataFrame contendo os registros pre-processados.
+    """
     df = pd.read_csv(INPUT_FILE, parse_dates=["timestamp"])
     df["error_type"] = df["error_type"].fillna("Undefined")
     df["falha"] = (df["status_code"] >= 400).astype(int)

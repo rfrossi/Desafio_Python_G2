@@ -106,7 +106,7 @@ class AFIDDataCleaner:
         """
         print("\n[TEXT] Padronizando textos...")
 
-        text_columns = self.df.select_dtypes(include=['object', 'str']).columns
+        text_columns = self.df.select_dtypes(include=['object']).columns
         standardized_count = 0
 
         for col in text_columns:
@@ -195,7 +195,7 @@ class AFIDDataCleaner:
                 self.cleaning_log.append(f"Valores nulos de '{col}' preenchidos com mediana")
 
         # Para colunas de texto, preencher com "Unknown"
-        text_cols = self.df.select_dtypes(include=['object', 'str']).columns
+        text_cols = self.df.select_dtypes(include=['object']).columns
         for col in text_cols:
             if self.df[col].isnull().any():
                 self.df[col] = self.df[col].fillna("Unknown")
