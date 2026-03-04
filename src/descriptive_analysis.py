@@ -150,17 +150,15 @@ def histogramas_erros(df: pd.DataFrame) -> None:
 
     gs = gridspec.GridSpec(2, 2, figure=fig, hspace=0.45, wspace=0.35)
 
-    # --- 3a. Top 15 tipos de erro (barras horizontais) ---
+    # --- 3a. Top N tipos de erro (barras horizontais, dinâmico) ---
     ax0 = fig.add_subplot(gs[0, :])
-    contagem_erro = (
-        df["error_type"]
-        .value_counts()
-        .head(15)
-        .sort_values()
-    )
+    contagem_erro = df["error_type"].value_counts()
+    n_tipos = min(len(contagem_erro), 15)  # Pega até 15, ou menos se houver poucos tipos
+    contagem_erro = contagem_erro.head(n_tipos).sort_values()
+
     cores = sns.color_palette("Blues_d", len(contagem_erro))
     bars = ax0.barh(contagem_erro.index, contagem_erro.values, color=cores)
-    ax0.set_title("Top 15 Tipos de Erro (error_type)", fontsize=12, fontweight="bold")
+    ax0.set_title(f"Top {n_tipos} Tipos de Erro (error_type)", fontsize=12, fontweight="bold")
     ax0.set_xlabel("Quantidade de Ocorrências")
     ax0.set_ylabel("Tipo de Erro")
     for bar, val in zip(bars, contagem_erro.values):
